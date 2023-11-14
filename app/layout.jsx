@@ -7,7 +7,7 @@ export const metadata = {
   title: 'Real-Time Notifications using Next.js Server Actions, Upstash Redis, and Streaming',
   description: 'A demo of real time notifications publications using Next.js Server Actions, Upstash Redis and Streaming.',
   openGraph: {
-    url: 'https://upstash-nextjs-publish-example.vercel.app',
+    url: 'https://upstash-nextjs-publish-client-example.vercel.app',
     title: 'Real-Time Notifications using Next.js Server Actions, Upstash, and Streaming',
     siteName: 'Real-Time Notifications using Next.js Server Actions, Upstash, and Streaming',
     description: 'A demo of real time notifications publications using Next.js Server Actions, Upstash Redis and Streaming.',
