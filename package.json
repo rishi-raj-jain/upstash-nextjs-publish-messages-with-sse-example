@@ -1,0 +1,21 @@
+{
+  "name": "upstash-nextjs-publish-client-example",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "fmt": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.25.1",
+    "next": "^14.0.2",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "prettier": "^3.1.0",
+    "tailwindcss": "^3.3.0"
+  }
+}
