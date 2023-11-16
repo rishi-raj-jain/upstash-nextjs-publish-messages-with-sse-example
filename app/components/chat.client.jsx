@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 const ChatComponent = () => {
   const [posts, setPosts] = useState([])
   const connectToStream = () => {
-    const eventSource = new EventSource('https://weathered-surf-9256.fly.dev/api/stream')
+    const eventSource = new EventSource('/api/stream')
     eventSource.addEventListener('message', (event) => {
       const tmp = JSON.parse(event.data)
       setPosts((prevPosts) => [...prevPosts, tmp])
