@@ -3,26 +3,35 @@
 import { useEffect, useState } from 'react'
 
 const ChatComponent = () => {
+  // Initial set of messages
   const [posts, setPosts] = useState([])
+  // Function to take care of initial connect to the SSE API
+  // Also, it reconnects to the SSE API as soon as it shuts down
+  // This keeps the connection alive - forever with micro second delays
   const connectToStream = () => {
+    // Connect to /api/stream as the SSE API source
     const eventSource = new EventSource('/api/stream')
     eventSource.addEventListener('message', (event) => {
+      // Parse the data received from the stream into JSON
+      // Add it the list of messages seen on the page
       const tmp = JSON.parse(event.data)
       setPosts((prevPosts) => [...prevPosts, tmp])
     })
-    eventSource.addEventListener('error', (event) => {
+    // In case of any error, close the event source
+    // So that it attempts to connect again
+    eventSource.addEventListener('error', () => {
       eventSource.close()
-      // Reconnect after a delay (e.g., 100 msecond)
-      setTimeout(connectToStream, 100)
     })
+    // As soon as SSE API source is closed, attempt to reconnect
     eventSource.onclose = () => {
-      // Reconnect after a delay (e.g., 100 msecond)
-      setTimeout(connectToStream, 100)
+      setTimeout(connectToStream, 1)
     }
     return eventSource
   }
   useEffect(() => {
+    // Initiate the first call to connect to SSE API
     const eventSource = connectToStream()
+    // As the component unmounts, close listener to SSE API
     return () => {
       eventSource.close()
     }

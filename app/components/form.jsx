@@ -4,8 +4,10 @@ import { useEffect } from 'react'
 import { useFormStatus } from 'react-dom'
 
 const Form = () => {
+  // Use React's useFormStatus hook to detect form submission state
   const { pending } = useFormStatus()
   useEffect(() => {
+    // If the form is not pending, reset the form
     if (!pending) document.getElementById('publish-form').reset()
   }, [pending])
   return (
