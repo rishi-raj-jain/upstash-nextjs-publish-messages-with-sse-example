@@ -1,5 +1,5 @@
 {
-  "name": "upstash-nextjs-publish-client-example",
+  "name": "upstash-nextjs-publish-messages-with-sse-example",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
