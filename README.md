@@ -23,6 +23,8 @@ An open source template of Real Time Notifications built with [Next.js](https://
 
 ### Platforms
 
+- [Upstash](https://upstash.com) – Redis as a Service
+
 - [Vercel](https://vercel.com) – Hosting
 
 ### Code Quality
