@@ -25,7 +25,12 @@ const ChatComponent = () => {
     // So that it attempts to connect again
     eventSource.addEventListener('error', () => {
       eventSource.close()
+      setTimeout(connectToStream, 1)
     })
+    // As soon as SSE API source is closed, attempt to reconnect
+    eventSource.onclose = () => {
+      setTimeout(connectToStream, 1)
+    }
     return eventSource
   }
   useEffect(() => {
