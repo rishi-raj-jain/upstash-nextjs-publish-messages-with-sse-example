@@ -3,7 +3,7 @@
 </a>
 
 # Building Real-Time Notifications with Upstash Redis, Next.js Server Actions and Vercel
-    
+
 <a href="#introduction"><strong>Introduction</strong></a> · <a href="#tech-stack"><strong>Tech Stack</strong></a> · <a href="#author"><strong>Author</strong></a>
 <br/>
 

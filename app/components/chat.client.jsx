@@ -1,5 +1,6 @@
 'use client'
 
+import { toast } from 'sonner'
 import { useEffect, useState } from 'react'
 
 const ChatComponent = () => {
@@ -15,7 +16,10 @@ const ChatComponent = () => {
       // Parse the data received from the stream into JSON
       // Add it the list of messages seen on the page
       const tmp = JSON.parse(event.data)
+      // Maintain a list of notifications
       setPosts((prevPosts) => [...prevPosts, tmp])
+      // Create a toast with the latest notification
+      toast(`${tmp.country}: ${tmp.message}`)
     })
     // In case of any error, close the event source
     // So that it attempts to connect again

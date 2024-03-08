@@ -29,11 +29,19 @@ export async function GET() {
         // Only send data when the channel message is reeived is same as the message is published to
         if (channel === setKey) controller.enqueue(encoder.encode(`data: ${message}\n\n`))
       })
+      redisSubscriber.on('end', () => {
+        controller.close()
+      })
     },
   })
   // Return the stream and try to keep the connection alive
   return new Response(customReadable, {
     // Set headers for Server-Sent Events (SSE) / stream from the server
-    headers: { 'Content-Type': 'text/event-stream; charset=utf-8', Connection: 'keep-alive', 'Cache-Control': 'no-cache, no-transform', 'Content-Encoding': 'none' },
+    headers: {
+      Connection: 'keep-alive',
+      'Content-Encoding': 'none',
+      'Cache-Control': 'no-cache, no-transform',
+      'Content-Type': 'text/event-stream; charset=utf-8',
+    },
   })
 }
